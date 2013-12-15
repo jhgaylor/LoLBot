@@ -1,0 +1,20 @@
+[2013-12-15 03:28:47,156]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 03:28:47,156]INFO     Connected to XMPP server.
+[2013-12-15 03:28:47,747]INFO     Node set to: sum20306036@pvp.net/2464704982
+[2013-12-15 03:28:47,884]INFO     CERT: Time until certificate expiration: 332 days, 2:31:12.115768
+[2013-12-15 03:29:01,715]INFO     
+===Received message===
+                      <message stamp="2013-12-15 09:29:03" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_46" type="chat"><body>Hello igetkills</body></message>
+===End message===
+
+[2013-12-15 03:35:11,878]INFO     Waiting for </stream:stream> from server
+[2013-12-15 03:35:16,958]INFO     Disconnecting.
+[2013-12-15 03:35:47,294]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 03:35:47,295]INFO     Connected to XMPP server.
+[2013-12-15 03:35:51,349]INFO     Node set to: sum20306036@pvp.net/4253870302
+[2013-12-15 03:35:51,988]INFO     CERT: Time until certificate expiration: 332 days, 2:24:08.011195
+[2013-12-15 03:35:58,992]INFO     
+===Received message===
+<message stamp="2013-12-15 09:35:59" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_49" type="chat"><body>zxcv</body></message>
+===End message===
+

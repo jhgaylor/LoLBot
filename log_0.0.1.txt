@@ -1,0 +1,72 @@
+ERROR    Could not match certficate against hostname: pvp.net
+INFO     Node set to: sum20306036@pvp.net/1151536344
+INFO     CERT: Time until certificate expiration: 332 days, 8:04:40.212945
+INFO     START
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 03:56:44" to="sum20306036@pvp.net" from="sum25215473@pvp.net/xiff" id="m_371" type="chat"><body>o</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 04:06:52" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_11" type="chat"><body>hello</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message to="sum20306036@pvp.net" muc_invite="true" from="pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net" type="normal"><x xmlns="http://jabber.org/protocol/muc#user"><invite from="sum37823604@pvp.net/xiff"><reason>{&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}</reason></invite></x><x xmlns="jabber:x:conference" jid="pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net">{&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}</x><body>sum37823604@pvp.net/xiff invites you to the room pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net ({&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}) </body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 04:08:03" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="msg_17" type="normal"><body>&lt;body&gt;&lt;inviteId&gt;1965280338&lt;/inviteId&gt;&lt;userName&gt;noobchef&lt;/userName&gt;&lt;profileIconId&gt;0&lt;/profileIconId&gt;&lt;gameType&gt;NORMAL_GAME&lt;/gameType&gt;&lt;groupId&gt;&lt;/groupId&gt;&lt;seasonRewards&gt;-1&lt;/seasonRewards&gt;&lt;mapId&gt;1&lt;/mapId&gt;&lt;queueId&gt;2&lt;/queueId&gt;&lt;gameMode&gt;classic_pvp&lt;/gameMode&gt;&lt;gameDifficulty&gt;&lt;/gameDifficulty&gt;&lt;/body&gt;</body><subject>GAME_INVITE</subject></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:20:11" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_21" type="chat"><body>adsf</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:20:15" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_23" type="chat"><body>zxcv</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:20:16" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_25" type="chat"><body>zxcv</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message to="sum20306036@pvp.net" muc_invite="true" from="pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net" type="normal"><x xmlns="http://jabber.org/protocol/muc#user"><invite from="sum37823604@pvp.net/xiff"><reason>{&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}</reason></invite></x><x xmlns="jabber:x:conference" jid="pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net">{&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}</x><body>sum37823604@pvp.net/xiff invites you to the room pr~a8e8b7ec57c80192445ca51b8d3df0dea2c7d3b2@conference.pvp.net ({&quot;message&quot;:&quot;Please join my group chat!&quot;,&quot;subject&quot;:&quot;noobchef&apos;s Chat Room&quot;,&quot;type&quot;:&quot;pr&quot;}) </body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:25:26" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_41" type="chat"><body>asdfasdf</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:26:00" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_43" type="chat"><body>asdfasdf</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     
+=====Received message=====
+<message stamp="2013-12-15 09:26:13" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_45" type="chat"><body>asdf</body></message>
+=====End message=====
+
+INFO     heard anything
+INFO     Waiting for </stream:stream> from server
+Done
