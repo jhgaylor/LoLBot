@@ -75,6 +75,9 @@ class LoLXMPPAdapter(Adapter):
         # handle the xmpp client events in the adapter
         self.client.add_event_handler("session_start", self._session_start)
         self.client.add_event_handler("message", self._message)
+        presence_events = ["presence_available", "presence_probe", "presence_subscribe", "presence_subscribed"]
+        for event in presence_events:
+            self.client.add_event_handler(event, self._presence)
 
         # bind events upon creation
         @self.on('connect')
@@ -142,12 +145,11 @@ class LoLXMPPAdapter(Adapter):
                    how it may be used.
         """
         logging.debug("Begin handling message event")
-        logging.info("Message: %s", msg)
+        logging.info("Incoming message: %s", msg)
         # TODO: Have the bot deal with presences/other message stanzas
         # FOR NOW only send the bot chat messages
         if msg['type'] in ('chat', 'normal'):
             jid_from = msg['from']
-            logging.debug("Received msg from: %s", jid_from)
             # TODO: hook up the brain
             # user = self.robot.brain.userForId(msg['from'])
             user = User(jid_from)
@@ -155,3 +157,6 @@ class LoLXMPPAdapter(Adapter):
             self.robot.receive(message)
 
         logging.debug("End handling message event.")
+
+    def _presence(self, msg):
+        logging.info("Incoming presence: %s", msg)

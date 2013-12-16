@@ -83,7 +83,6 @@ class LoLBot(object):
             # therefore no response has been generated)
             # add a catchall response here
             Response(self, message, True).send("Unknown command")
-            pass
 
     def run(self):
         """
@@ -111,6 +110,8 @@ class LoLBot(object):
     def _defaultListeners(self):
         """
         TODO: move this somewhere else.
+
+        each callback needs to return true-ish if it succeeds
         """
 
         @self.hear('(!find) +(\w+)')  # lolking lookup
@@ -121,14 +122,16 @@ class LoLBot(object):
             groups = response.match.groups()
             text = "http://quickfind.kassad.in/profile/na/%s/" % groups[1]
             response.send(text)
+            return True
 
 
         self.hear('(!counter) +(\w+)')
         def championselect(response):
             """
-            Return a url to a champion on championselect
+            Send a url to a champion on championselect
             """
             groups = response.match.groups()
             text = "http://www.championselect.net/champ/%s/" % groups[1]
             response.send(text)
+            return True
 
