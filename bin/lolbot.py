@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # # Setup logging.
 
     logging.basicConfig(level=opts.loglevel,
-                        # filename='../log.txt',
+                        filename='../log.txt',
                         format='[%(asctime)s]%(levelname)-8s %(message)s')
     # format='%(levelname)s:%(message)s'
 

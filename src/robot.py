@@ -3,7 +3,7 @@ import logging
 from pyee import EventEmitter
 from brain import Brain
 from listener import RegexListener
-
+from response import Response
 
 class LoLBot(object):
     """
@@ -26,12 +26,37 @@ class LoLBot(object):
         def _adapter_connect():
             self.emit('connect')
 
-    def hear(self, pattern, callback):
+    def hear(self, pattern, cb=None):
         """
         Register a callback to a message 'heard' by the bot
+
+        Used a trick picked up from jesusabdullah@github to use as a decorator
+        https://github.com/jesusabdullah/pyee/blob/master/pyee/__init__.py#L68
+
+        Example:
+        @hear('foo')
+        def foo(response):
+            response.send("Foo!")
+
+        OR
+
+        def bar(response):
+            response.send("Bar!")
+
+        hear('!bar'. bar)
         """
-        listener = RegexListener(self, pattern, callback)
-        self.listeners.append(listener)
+        def _hear(cb):
+            listener = RegexListener(self, pattern, cb)
+            self.listeners.append(listener)
+
+            # Return original function so removal works
+            return cb
+
+        if cb is None:
+            return _hear
+        else:
+            return _hear(cb)
+
 
     def receive(self, message):
         """
@@ -43,17 +68,22 @@ class LoLBot(object):
         # START HERE: We can get here but listeners is always empty
         # FOR NOW: the message text is accessed at ['body']
 
-        logging.info(message)
-        # get the response from each listener
-        responses = [listener(message['body']) for listener in self.listeners]
-        # remove the empty responses
-        responses = [response for response in responses if response]
-        if not len(responses):
+        logging.info("Bot is listening to: %s", message.text)
+        heard = False
+        # send the message to each listener
+        for listener in self.listeners:
+            if message.done:
+                break
+            resp = listener(message)
+            if resp and not heard:
+                heard = True
+
+        if not heard:
             # no listeners 'heard' the message (and
             # therefore no response has been generated)
             # add a catchall response here
+            Response(self, message, True).send("Unknown command")
             pass
-        self.send(responses)
 
     def run(self):
         """
@@ -62,12 +92,12 @@ class LoLBot(object):
         logging.debug("LoLBot::run!")
         self.adapter.run()
 
-    def send(self, *strings):
+    def send(self, *messages):
         """
         Delegates to the adapter
         """
         logging.debug("LoLBot::send!")
-        self.adapter.send(*strings)
+        self.adapter.send(*messages)
 
     def shutdown(self):
         """
@@ -82,15 +112,23 @@ class LoLBot(object):
         """
         TODO: move this somewhere else.
         """
-        import requests
-        def quickfind(response, listener):
+
+        @self.hear('(!find) +(\w+)')  # lolking lookup
+        def quickfind(response):
             """
             Called by a Listener instance
             """
-            try:
-                url = "http://quickfind.kassad.in/profile/na/%s/" % (listener.parts[1], )
-                return url
-            except:
-                return "I would lookup lolking"
+            groups = response.match.groups()
+            text = "http://quickfind.kassad.in/profile/na/%s/" % groups[1]
+            response.send(text)
 
-        self.hear('(!find) +(\w+)', quickfind)  # lolking lookup
+
+        self.hear('(!counter) +(\w+)')
+        def championselect(response):
+            """
+            Return a url to a champion on championselect
+            """
+            groups = response.match.groups()
+            text = "http://www.championselect.net/champ/%s/" % groups[1]
+            response.send(text)
+

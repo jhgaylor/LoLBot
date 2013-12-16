@@ -6,7 +6,8 @@ import sys
 
 import logging
 import sleekxmpp
-
+from message import TextMessage
+from botuser import User
 # Python versions before 3.0 do not use UTF-8 encoding
 # by default. To ensure that Unicode is handled properly
 # throughout SleekXMPP, we will set the default encoding
@@ -100,8 +101,13 @@ class LoLXMPPAdapter(Adapter):
             logging.error("===Kill signal received===")
             sys.exit()
 
-    def send(self, *strings):
+    def send(self, message, *strings):
         logging.info(strings)
+        jid = message.user.id
+        for body in strings:
+            m = self.client.make_message(jid, body, mtype='chat')
+            logging.debug(m)
+            m.send()
 
     # Define xmpp client event handlers
     # naming pattern is '_event_name'
@@ -136,17 +142,16 @@ class LoLXMPPAdapter(Adapter):
                    how it may be used.
         """
         logging.debug("Begin handling message event")
-        logging.info("\n===Received message===\n%s\n===End message===\n",
-                     msg
-                     )
-        # TODO: make these objects, stablize the receive api
-        # user = self.robot.brain.userForId(msg['from'])
-        # message = object() # this would be a Message(user, msg)
-        # FOR NOW just use the xmpp msg object
+        logging.info("Message: %s", msg)
+        # TODO: Have the bot deal with presences/other message stanzas
+        # FOR NOW only send the bot chat messages
         if msg['type'] in ('chat', 'normal'):
-            # TODO: Have the bot deal with presences/other message stanzas
-            # FOR NOW only send the bot chat messages
-            self.robot.receive(msg)
-            msg.reply("I'm afk, probably asleep.").send()
+            jid_from = msg['from']
+            logging.debug("Received msg from: %s", jid_from)
+            # TODO: hook up the brain
+            # user = self.robot.brain.userForId(msg['from'])
+            user = User(jid_from)
+            message = TextMessage(user, msg['body'], id=msg['id'])
+            self.robot.receive(message)
 
         logging.debug("End handling message event.")
