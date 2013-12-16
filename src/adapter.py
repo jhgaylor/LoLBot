@@ -19,59 +19,23 @@ else:
 
 
 class LoLXMPPClient(sleekxmpp.ClientXMPP):
-
+    """
+    A thin wrapper around sleekxmpp.ClientXMPP that
+    also registers some plugins
+    """
     def __init__(self, jid, password):
-        # if for some reason this is causing a problem, try
-        # flipping these
         super(LoLXMPPClient, self).__init__(jid, password)
-        # sleekxmpp.ClientXMPP.__init__(self, jid, password)
-
-        # self.add_event_handler("session_start", self.start)
-        # self.add_event_handler("message", self.message)
 
         self.register_plugin('xep_0030')  # Service Discovery
         self.register_plugin('xep_0004')  # Data Forms
         self.register_plugin('xep_0060')  # PubSub
         self.register_plugin('xep_0199')  # XMPP Ping
 
-    # def start(self, event):
-    #     """
-    #     Process the session_start event.
-
-    #     Typical actions for the session_start event are
-    #     requesting the roster and broadcasting an initial
-    #     presence stanza.
-
-    #     Arguments:
-    #         event -- An empty dictionary. The session_start
-    #                  event does not provide any additional
-    #                  data.
-    #     """
-    #     self.send_presence()
-    #     self.get_roster()
-
-    # def message(self, msg):
-    #     """
-    #     Process incoming message stanzas. Be aware that this also
-    #     includes MUC messages and error messages. It is usually
-    #     a good idea to check the messages's type before processing
-    #     or sending replies.
-
-    #     Arguments:
-    #         msg -- The received message stanza. See the documentation
-    #                for stanza objects and the Message stanza to see
-    #                how it may be used.
-    #     """
-    #     # logging.info("got a message")
-    #     logging.info("\n===Received message===\n%s\n===End message===\n",
-    #                  msg
-    #                  )
-    #     if msg['type'] in ('chat', 'normal'):
-    #         msg.reply("I'm afk, probably asleep.").send()
-
 
 class Adapter(EventEmitter):
-
+    """
+    The interface for an adapter to LoLBot
+    """
     def __init__(self, robot):
         super(Adapter, self).__init__()
         self.robot = robot
@@ -79,59 +43,85 @@ class Adapter(EventEmitter):
     def receive(self, message):
         self.robot.receive(message)
 
+    def send(self):
+        """
+        Must be overwritten
+        """
+        raise NotImplementedError
+
 
 class LoLXMPPAdapter(Adapter):
     """
     An adapter for LoLBot to the riot xmpp server
     This idea is mostly here to keep a clean seperation
     of duties between the bot and the client
-    though I guess someone could write an irc adapter?!?!
     """
 
     def __init__(self, robot, jid, password,
                  host='chat.na1.lol.riotgames.com',
                  port=5223
                  ):
+        """
+        Create an instance of LoLXMPPClient, bind
+        event handlers to instance methods
+
+        """
         super(LoLXMPPAdapter, self).__init__(robot)
         self.client = LoLXMPPClient(jid, password)
+        self.host = host
+        self.port = port
 
+        # handle the xmpp client events in the adapter
         self.client.add_event_handler("session_start", self._session_start)
         self.client.add_event_handler("message", self._message)
 
-        @self.on('connected')
-        def log_connected():
+        # bind events upon creation
+        @self.on('connect')
+        def on_connect():
             logging.info("Connected to XMPP server.")
 
+        @self.on("disconnect")
+        def on_disconnect():
+            logging.info("Disconnected from XMPP server.")
+
+    def run(self):
         # Connect to the XMPP server and start processing XMPP stanzas.
         try:
-            if self.client.connect((host, port), use_ssl=True):
+            if self.client.connect((self.host, self.port), use_ssl=True):
+                self.emit('connect')
                 # TODO: switch to false?
-                self.emit('connected')
+                # if block=False. this isn't where we
+                # emit disconnected
                 self.client.process(block=True)
-                # TODO: if block=False this should read differently
-                logging.info("Disconnecting.")
+                self.emit('disconnect')
             else:
                 logging.warning("Unable to connect.")
         except KeyboardInterrupt:
             logging.error("===Kill signal received===")
             sys.exit()
 
+    def send(self, *strings):
+        logging.info(strings)
+
+    # Define xmpp client event handlers
+    # naming pattern is '_event_name'
     def _session_start(self, event):
         """
         Process the session_start event.
 
-        Typical actions for the session_start event are
-        requesting the roster and broadcasting an initial
-        presence stanza.
+        requests the roster
+        broadcasts an initial presence stanza
+        TODO: talk to brain about the user
 
         Arguments:
             event -- An empty dictionary. The session_start
                      event does not provide any additional
                      data.
         """
+        logging.debug("Begin handling session_start event")
         self.client.send_presence()
         self.client.get_roster()
-
+        logging.debug("End handling session_start event")
 
     def _message(self, msg):
         """
@@ -145,9 +135,18 @@ class LoLXMPPAdapter(Adapter):
                    for stanza objects and the Message stanza to see
                    how it may be used.
         """
-        # logging.info("got a message")
+        logging.debug("Begin handling message event")
         logging.info("\n===Received message===\n%s\n===End message===\n",
                      msg
                      )
+        # TODO: make these objects, stablize the receive api
+        # user = self.robot.brain.userForId(msg['from'])
+        # message = object() # this would be a Message(user, msg)
+        # FOR NOW just use the xmpp msg object
         if msg['type'] in ('chat', 'normal'):
+            # TODO: Have the bot deal with presences/other message stanzas
+            # FOR NOW only send the bot chat messages
+            self.robot.receive(msg)
             msg.reply("I'm afk, probably asleep.").send()
+
+        logging.debug("End handling message event.")

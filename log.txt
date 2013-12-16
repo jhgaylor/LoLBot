@@ -18,3 +18,250 @@
 <message stamp="2013-12-15 09:35:59" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_49" type="chat"><body>zxcv</body></message>
 ===End message===
 
+[2013-12-15 03:47:51,268]INFO     
+===Received message===
+<message stamp="2013-12-15 09:47:52" to="sum20306036@pvp.net" from="sum31330136@pvp.net/xiff" id="m_19" type="chat"><body>sup fggt</body></message>
+===End message===
+
+[2013-12-15 03:47:56,678]INFO     
+===Received message===
+<message stamp="2013-12-15 09:47:57" to="sum20306036@pvp.net" from="sum31330136@pvp.net/xiff" id="m_21" type="chat"><body>Nice</body></message>
+===End message===
+
+[2013-12-15 03:48:44,425]INFO     
+===Received message===
+<message stamp="2013-12-15 09:48:45" to="sum20306036@pvp.net" from="sum31330136@pvp.net/xiff" id="m_25" type="chat"><body>This is coming together really well</body></message>
+===End message===
+
+[2013-12-15 03:56:18,657]INFO     Waiting for </stream:stream> from server
+[2013-12-15 03:56:23,689]INFO     Disconnecting.
+[2013-12-15 03:56:26,541]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 03:56:26,541]INFO     Connected to XMPP server.
+[2013-12-15 03:56:27,130]INFO     Node set to: sum20306036@pvp.net/18201220
+[2013-12-15 03:56:27,264]INFO     CERT: Time until certificate expiration: 332 days, 2:03:32.735429
+[2013-12-15 03:56:31,639]INFO     
+===Received message===
+<message stamp="2013-12-15 09:56:33" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_65" type="chat"><body>!lk test</body></message>
+===End message===
+
+[2013-12-15 03:56:31,639]ERROR    Error processing event handler: <bound method LoLXMPPAdapter._message of <adapter.LoLXMPPAdapter object at 0x1046a1410>>
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in listeners:
+NameError: global name 'listeners' is not defined
+[2013-12-15 03:56:31,640]ERROR    Error handling {jabber:client}message stanza
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in listeners:
+NameError: global name 'listeners' is not defined
+[2013-12-15 03:56:31,641]ERROR    global name 'listeners' is not defined
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in listeners:
+NameError: global name 'listeners' is not defined
+[2013-12-15 03:56:55,279]INFO     Waiting for </stream:stream> from server
+[2013-12-15 03:57:00,360]INFO     Disconnecting.
+[2013-12-15 03:57:02,501]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 03:57:02,501]INFO     Connected to XMPP server.
+[2013-12-15 03:57:03,058]INFO     Node set to: sum20306036@pvp.net/3416803298
+[2013-12-15 03:57:03,191]INFO     CERT: Time until certificate expiration: 332 days, 2:02:56.808873
+[2013-12-15 03:57:15,490]INFO     
+===Received message===
+<message stamp="2013-12-15 09:57:16" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_67" type="chat"><body>test</body></message>
+===End message===
+
+[2013-12-15 03:57:15,490]ERROR    Error processing event handler: <bound method LoLXMPPAdapter._message of <adapter.LoLXMPPAdapter object at 0x10db69410>>
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 03:57:15,492]ERROR    Error handling {jabber:client}message stanza
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 03:57:15,492]ERROR    'LoLBot' object has no attribute 'listeners'
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 03:58:24,874]INFO     Waiting for </stream:stream> from server
+[2013-12-15 03:58:29,958]INFO     Disconnecting.
+[2013-12-15 03:59:01,033]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 03:59:01,033]INFO     Connected to XMPP server.
+[2013-12-15 03:59:01,625]INFO     Node set to: sum20306036@pvp.net/1304019786
+[2013-12-15 03:59:01,760]INFO     CERT: Time until certificate expiration: 332 days, 2:00:58.239665
+[2013-12-15 03:59:08,664]INFO     
+===Received message===
+<message stamp="2013-12-15 09:59:10" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_69" type="chat"><body>asdf</body></message>
+===End message===
+
+[2013-12-15 03:59:08,664]ERROR    Error processing event handler: <bound method LoLXMPPAdapter._message of <adapter.LoLXMPPAdapter object at 0x104056410>>
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 44, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 03:59:08,665]ERROR    Error handling {jabber:client}message stanza
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 44, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 03:59:08,666]ERROR    'LoLBot' object has no attribute 'listeners'
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 44, in receive
+    for listener in self.listeners:
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 04:00:48,283]INFO     Waiting for </stream:stream> from server
+[2013-12-15 04:00:53,315]INFO     Disconnecting.
+[2013-12-15 04:02:16,705]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 04:02:16,705]INFO     Connected to XMPP server.
+[2013-12-15 04:02:17,297]INFO     Node set to: sum20306036@pvp.net/798502193
+[2013-12-15 04:02:17,431]INFO     CERT: Time until certificate expiration: 332 days, 1:57:42.568763
+[2013-12-15 04:02:23,118]INFO     
+===Received message===
+<message stamp="2013-12-15 10:02:24" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_71" type="chat"><body>adsf</body></message>
+===End message===
+
+[2013-12-15 04:02:23,118]ERROR    Error processing event handler: <bound method LoLXMPPAdapter._message of <adapter.LoLXMPPAdapter object at 0x10c4e7510>>
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    responses = (listener(message) for listener in self.listeners)
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 04:02:23,119]ERROR    Error handling {jabber:client}message stanza
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    responses = (listener(message) for listener in self.listeners)
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 04:02:23,119]ERROR    'LoLBot' object has no attribute 'listeners'
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 43, in receive
+    responses = (listener(message) for listener in self.listeners)
+AttributeError: 'LoLBot' object has no attribute 'listeners'
+[2013-12-15 04:03:17,586]INFO     Waiting for </stream:stream> from server
+[2013-12-15 04:03:22,670]INFO     Disconnecting.
+[2013-12-15 04:03:24,420]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 04:03:24,421]INFO     Connected to XMPP server.
+[2013-12-15 04:03:25,012]INFO     Node set to: sum20306036@pvp.net/2417554157
+[2013-12-15 04:03:25,146]INFO     CERT: Time until certificate expiration: 332 days, 1:56:34.853289
+[2013-12-15 04:03:28,684]INFO     
+===Received message===
+<message stamp="2013-12-15 10:03:30" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_73" type="chat"><body>adsf</body></message>
+===End message===
+
+[2013-12-15 04:03:28,685]ERROR    Error processing event handler: <bound method LoLXMPPAdapter._message of <adapter.LoLXMPPAdapter object at 0x10122b510>>
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 45, in receive
+    if not len(responses):
+TypeError: object of type 'generator' has no len()
+[2013-12-15 04:03:28,686]ERROR    Error handling {jabber:client}message stanza
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 45, in receive
+    if not len(responses):
+TypeError: object of type 'generator' has no len()
+[2013-12-15 04:03:28,686]ERROR    object of type 'generator' has no len()
+Traceback (most recent call last):
+  File "/Users/jake/dev/venvironments/lolbot/lib/python2.7/site-packages/sleekxmpp/xmlstream/xmlstream.py", line 1659, in _event_runner
+    func(*args)
+  File "../src/adapter.py", line 132, in _message
+    self.robot.receive(msg)
+  File "../src/robot.py", line 45, in receive
+    if not len(responses):
+TypeError: object of type 'generator' has no len()
+[2013-12-15 04:03:41,049]INFO     Waiting for </stream:stream> from server
+[2013-12-15 04:03:46,086]INFO     Disconnecting.
+[2013-12-15 04:03:48,184]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 04:03:48,184]INFO     Connected to XMPP server.
+[2013-12-15 04:03:48,740]INFO     Node set to: sum20306036@pvp.net/337755893
+[2013-12-15 04:03:48,875]INFO     CERT: Time until certificate expiration: 332 days, 1:56:11.124095
+[2013-12-15 04:03:58,535]INFO     
+===Received message===
+<message stamp="2013-12-15 10:03:59" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_75" type="chat"><body>asdf</body></message>
+===End message===
+
+[2013-12-15 04:04:07,031]INFO     
+===Received message===
+<message stamp="2013-12-15 10:04:08" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_77" type="chat"><body>!lk test</body></message>
+===End message===
+
+[2013-12-15 04:06:29,120]INFO     Waiting for </stream:stream> from server
+[2013-12-15 04:06:34,204]INFO     Disconnecting.
+[2013-12-15 04:06:35,493]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 04:06:35,493]INFO     Connected to XMPP server.
+[2013-12-15 04:06:36,082]INFO     Node set to: sum20306036@pvp.net/3453596751
+[2013-12-15 04:06:36,217]INFO     CERT: Time until certificate expiration: 332 days, 1:53:23.782983
+[2013-12-15 04:06:43,887]INFO     
+===Received message===
+<message stamp="2013-12-15 10:06:45" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_79" type="chat"><body>asdfasdf</body></message>
+===End message===
+
+[2013-12-15 13:23:37,573]INFO     
+===Received message===
+<message stamp="2013-12-15 19:23:40" to="sum20306036@pvp.net" from="sum38844687@pvp.net/xiff" id="msg_63" type="normal"><body>&lt;body&gt;&lt;inviteId&gt;1677941112&lt;/inviteId&gt;&lt;userName&gt;Tylersteven&lt;/userName&gt;&lt;profileIconId&gt;0&lt;/profileIconId&gt;&lt;gameType&gt;NORMAL_GAME&lt;/gameType&gt;&lt;groupId&gt;&lt;/groupId&gt;&lt;seasonRewards&gt;-1&lt;/seasonRewards&gt;&lt;originalInvitor&gt;Shadow15131&lt;/originalInvitor&gt;&lt;mapId&gt;10&lt;/mapId&gt;&lt;queueId&gt;8&lt;/queueId&gt;&lt;gameMode&gt;classic_pvp&lt;/gameMode&gt;&lt;gameDifficulty&gt;&lt;/gameDifficulty&gt;&lt;/body&gt;</body><subject>GAME_INVITE</subject></message>
+===End message===
+
+[2013-12-15 19:42:43,253]INFO     
+===Received message===
+<message stamp="2013-12-16 01:42:47" to="sum20306036@pvp.net" from="sum37823604@pvp.net/xiff" id="m_81" type="chat"><body>asdf</body></message>
+===End message===
+
+[2013-12-15 19:58:04,993]INFO     Waiting for </stream:stream> from server
+[2013-12-15 19:58:10,025]INFO     Disconnecting.
+[2013-12-15 19:58:52,308]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 19:59:06,743]ERROR    Could not match certficate against hostname: pvp.net
+[2013-12-15 19:59:27,378]ERROR    Could not match certficate against hostname: pvp.net

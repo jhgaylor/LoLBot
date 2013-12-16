@@ -8,7 +8,7 @@ class Listener(object):
     def __call__(self, message):
         if self.isHeard(message):
             response = object()
-            return cb(response)
+            return self.cb(response, self)
             # return some object with all the stuff necessary to represent the response
 
     @property
@@ -18,5 +18,10 @@ class Listener(object):
 class RegexListener(Listener):
     def __init__(self, robot, pattern, cb):
         self.regex = re.compile(pattern)
-        self.isHeard = self.regex.match
         self.cb = cb
+
+    def isHeard(self, message):
+        match = self.regex.match(message)
+        if match:
+            self.parts = match.groups()
+        return match

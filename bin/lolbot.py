@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # # Setup logging.
 
     logging.basicConfig(level=opts.loglevel,
-                        filename='../log.txt',
+                        # filename='../log.txt',
                         format='[%(asctime)s]%(levelname)-8s %(message)s')
     # format='%(levelname)s:%(message)s'
 
@@ -46,12 +46,7 @@ if __name__ == '__main__':
     # Setup the LOLBot and register plugins.
     bot = LoLBot(LoLXMPPAdapter)
 
-    @bot.on('connected')
-    def run_bot():
-        """
-        Kick off the bot!
-        """
-        bot.run()
+    bot.run()
 
 
 # available bots
@@ -64,3 +59,8 @@ if __name__ == '__main__':
 #http://www.lolking.net/search/?name=igetkills redirects to
 #http://www.lolking.net/summoner/na/20306036
 # except lol king does black magic to bone us
+
+
+#mind blown
+#https://github.com/markstory/hubot-xmpp/blob/master/src/xmpp.coffee#L147
+#this 'user' is an internal user to the bot, not an xmpp user
