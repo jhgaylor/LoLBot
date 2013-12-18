@@ -57,9 +57,9 @@ class LoLBot(object):
         else:
             return _hear(cb)
 
-
     def receive(self, message):
         """
+        Entry point for incoming messages
         Sends the message to all the listeners
         FOR NOW: Message is an instance of the XMPP message
             but it will be a Message object
@@ -125,13 +125,24 @@ class LoLBot(object):
             return True
 
 
-        self.hear('(!counter) +(\w+)')
+        @self.hear('(!counter) +(\w+)')
         def championselect(response):
             """
             Send a url to a champion on championselect
             """
             groups = response.match.groups()
             text = "http://www.championselect.net/champ/%s/" % groups[1]
+            response.send(text)
+            return True
+
+        @self.hear('(<3)')
+        def championselect(response):
+            """
+            Send a url to a champion on championselect
+            """
+            groups = response.match.groups()
+            # to = groups[1]
+            text = "I love you! <3 <3"
             response.send(text)
             return True
 

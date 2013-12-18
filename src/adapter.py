@@ -75,9 +75,8 @@ class LoLXMPPAdapter(Adapter):
         # handle the xmpp client events in the adapter
         self.client.add_event_handler("session_start", self._session_start)
         self.client.add_event_handler("message", self._message)
-        presence_events = ["presence_available", "presence_probe", "presence_subscribe", "presence_subscribed"]
-        for event in presence_events:
-            self.client.add_event_handler(event, self._presence)
+
+        self.client.add_event_handler("presence_subscribe", self._presence_subscribe)
 
         # bind events upon creation
         @self.on('connect')
@@ -105,11 +104,10 @@ class LoLXMPPAdapter(Adapter):
             sys.exit()
 
     def send(self, message, *strings):
-        logging.info(strings)
         jid = message.user.id
         for body in strings:
             m = self.client.make_message(jid, body, mtype='chat')
-            logging.debug(m)
+            logging.debug("Sending message: %s", m)
             m.send()
 
     # Define xmpp client event handlers
@@ -145,7 +143,7 @@ class LoLXMPPAdapter(Adapter):
                    how it may be used.
         """
         logging.debug("Begin handling message event")
-        logging.info("Incoming message: %s", msg)
+        logging.debug("Incoming message: %s", msg)
         # TODO: Have the bot deal with presences/other message stanzas
         # FOR NOW only send the bot chat messages
         if msg['type'] in ('chat', 'normal'):
@@ -159,4 +157,20 @@ class LoLXMPPAdapter(Adapter):
         logging.debug("End handling message event.")
 
     def _presence(self, msg):
-        logging.info("Incoming presence: %s", msg)
+        logging.debug("Incoming presence: %s", msg)
+
+    def _presence_subscribe(self, msg):
+        """
+        Automatically accepts incoming friend request
+        and sends a request for a bidirectional relationship
+
+        Responds to a presence type 'subscribe' (friend request)
+        with a presence type 'subscribed' (accept friend request)
+        """
+        logging.info("Incoming friend request: %s", msg)
+        friend_accept = self.client.make_presence(pto=msg['from'], pfrom=msg['to'], ptype="subscribed")
+        request_bidirectional = self.client.make_presence(pto=msg['from'], pfrom=msg['to'], ptype="subscribe")
+        logging.info("outgoing friend accept: %s", friend_accept)
+        logging.info("outgoing friend request: %s", request_bidirectional)
+        friend_accept.send()
+        request_bidirectional.send()
